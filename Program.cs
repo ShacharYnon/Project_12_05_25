@@ -9,12 +9,13 @@ namespace Project_12_05_25
 {
     internal class Program
     {
-        static string[] splitArr(string arr_) 
+        static int[] series =new int[0];
+        static string[] splitArr(string arr_)
         {
             string[] wordes = arr_.Split(' ');
             return wordes;
-        }   
-        static bool checkInt(string[] arr_)
+        }
+        static bool checkIntString(string[] arr_)
         {
             foreach (string item in arr_)
             {
@@ -23,6 +24,10 @@ namespace Project_12_05_25
                     return false;
                 }
             }
+            return true;
+        }
+        static bool checkIntInt(int[] arr_)
+        {
             return true;
         }
         static bool checkLen(int[] ins_)
@@ -50,7 +55,7 @@ namespace Project_12_05_25
             int[] arrt = Array.ConvertAll(arr_, int.Parse);
             return arrt;
         }
-        static int manu()
+        static int menu()
         {
             Console.WriteLine(" ------MENU------\r\n" +
             "1. Enter a positive numbers series.\r\n" +
@@ -66,71 +71,63 @@ namespace Project_12_05_25
             int num_ = int.Parse(Console.ReadLine());
             return num_;
         }
-        //static void managManu(int num)
-        //{
-        //    switch (num)
-        //    {
-        //        case 1:
-        //            mGetSeriesNum();
-        //            break;
-
-        //        case 2:
-        //            show();
-        //            break;
-
-        //        case 3:
-        //            reversShow();
-        //            break;
-
-        //        case 4:
-        //            sortMinToMax();
-        //            break;
-
-        //        case 5:
-        //            bigNumber();
-        //            break;
-
-        //        case 6:
-        //            smallNumber();
-        //            break;
-
-        //        case 7:
-        //            averageOfTheSeries();
-        //            break;
-
-        //        case 8:
-        //            numObgInSeries();
-        //            break;
-
-        //        case 9:
-        //            sumOfTheSeries();
-        //            break;
-
-        //        case 10:
-        //             false;
-        //            break;
-        //    }
-        //}
-        static string mGetSeriesNum(string str)
+        static void managManu()
+        {
+            bool flag = true;
+            while (flag)
+            {
+                int choice = menu();
+            
+            switch (choice)
+            {
+                case 1:
+                    mGetSeriesNum();
+                    break;
+                case 2:
+                    show();
+                    break;
+                case 3:
+                    reversShow();
+                    break;
+                case 4:
+                    sortMinToMax();
+                    break;
+                case 5:
+                    bigNumber();
+                    break;
+                case 6:
+                    smallNumber();
+                    break;
+                case 7:
+                    averageOfTheSeries();
+                    break;
+                case 8:
+                    numObgInSeries();
+                    break;
+                case 9:
+                    sumOfTheSeries();
+                    break;
+                case 10:
+                    returen folaese;
+                    break;
+            }
+            }
+        }
+        static string mGetSeriesNum()
         {
             Console.WriteLine("Enter a positive numbers series. ");
             string str_ = Console.ReadLine();
             return str_;
         }
-        static void reversShow(int[] arr_)
+        static void reversShow()
         {
-            int[] revers = new int[arr_.Length];
-
-            for (int i = 0; i < arr_.Length; i++)
+            for (int i = arr_.Length - 1; i >= 0; i--)
             {
-                revers[i] = arr_[arr_.Length - 1 - i];
+                Console.Write(arr_[i] + " ");
             }
-            foreach (int i in revers)
-            {
-                Console.Write(i + " ");
-            }
+             
         }
-        static void show(int[] arr_)
+        static void show()
         {
             foreach (int i in arr_)
             {
@@ -143,12 +140,12 @@ namespace Project_12_05_25
             foreach (int i in arr_)
             {
                 Console.Write(i + " ");
-            }          
+            }
         }
         static void sortMaxToMin(int[] arr_)
         {
-            Array.Sort(arr_);       
-            Array.Reverse(arr_);    
+            Array.Sort(arr_);
+            Array.Reverse(arr_);
 
             foreach (int num in arr_)
             {
@@ -160,7 +157,7 @@ namespace Project_12_05_25
             Array.Sort(arr_);
             Array.Reverse(arr_);
             Console.Write(arr_[0]);
-        }   
+        }
         static void smallNumber(int[] arr_)
         {
             Array.Sort(arr_);
@@ -194,18 +191,13 @@ namespace Project_12_05_25
             bool onOff = true;
             while (onOff)
             {
-               
             }
-
-
-
         }
 
 
         static void Main(string[] args)
         {
-            if (splitArr(args))
-                meneger();
+            menu();
         }
     }
 }
